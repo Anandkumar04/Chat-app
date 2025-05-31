@@ -11,13 +11,7 @@ const Message = require('./models/Message');      // Your mongoose message model
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: allowedOrigins,
-    methods: ["GET", "POST"],
-    credentials: true
-  }
-});
+
 
 
 // Middleware
@@ -36,6 +30,14 @@ app.use(cors({
   },
   credentials: true
 }));
+
+const io = socketIo(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 app.use(express.json());
 
