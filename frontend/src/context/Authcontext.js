@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     try {
       console.log('Login attempt with:', { email, password }); // Debug log
       
-      const response = await axios.post('http://localhost:5000/api/auth/login', {
+      const response = await axios.post('https://chat-app-backend-gz6q.onrender.com/api/auth/login', {
         email,
         password
       });
