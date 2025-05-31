@@ -13,13 +13,30 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "https://chat-app-phi-five-89.vercel.app/",
-    methods: ["GET", "POST"]
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true
   }
 });
 
+
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  "https://chat-app-phi-five-89.vercel.app",
+  "https://chat-app-git-main-anand-kumars-projects-ccc76eff.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Routes
