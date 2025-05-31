@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 import { useAuth } from '../context/Authcontext';
 
-const SOCKET_URL = 'http://localhost:5000';
+const SOCKET_URL = 'https://chat-app-backend-gz6q.onrender.com';
 
 const Chat = () => {
   const { user, logout } = useAuth();
