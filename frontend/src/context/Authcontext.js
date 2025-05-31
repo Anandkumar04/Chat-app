@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     try {
       console.log('Register attempt with:', { username, email, password }); // Debug log
       
-      const response = await axios.post('http://localhost:5000/api/auth/register', {
+      const response = await axios.post('https://chat-app-backend-gz6q.onrender.com/api/auth/register', {
         username,
         email,
         password
